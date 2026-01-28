@@ -1,4 +1,3 @@
-# Financial Dashboard
 
 ## Setup
 
