@@ -1,3 +1,9 @@
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
 :root {
   font-family: sans-serif;
   font-weight: 400;
@@ -7,8 +13,13 @@
   --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --white: #ffffff;
   --bg: #f5f0f0;
-  --gray: #737373;
-  --blue: #556ab5;
+  --gray: #666;
+  --blue: #1e88e5;
+  --black: #000;
+
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-border: #e0e0e0;
+  --color-skeleton: #e0e0e0;
 
   --font-small: 14px;
   --font-medium: 16px;

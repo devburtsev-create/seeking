@@ -1,49 +1,59 @@
-.ratings {
+.table {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 0;
 }
 
-.ratings-item {
+.header {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 2px solid var(--color-border);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--black);
+}
+
+.headerLabel {
+  font-weight: 600;
+  display: none;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
   gap: 12px;
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-border);
 }
 
-.ratings-item:last-child {
+.row:last-child {
   border-bottom: none;
 }
 
-.ratings-item__label {
+.label {
   color: var(--blue);
   font-weight: 500;
   font-size: 15px;
 }
 
-.ratings-item__rating {
-  font-weight: 600;
-  text-align: center;
-  font-size: 14px;
+.value {
   color: var(--black);
-}
-
-.ratings-item__score {
   font-weight: 500;
+  font-size: 15px;
   text-align: center;
-  font-size: 14px;
-  color: var(--blue);
+  min-width: 30px;
 }
 
 .skeletonRow {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 1fr auto auto auto;
   gap: 12px;
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .skeletonRow:last-child {
@@ -51,8 +61,7 @@
 }
 
 .skeletonLabel,
-.skeletonRating,
-.skeletonScore {
+.skeletonCell {
   height: 16px;
   background: linear-gradient(
     90deg,
@@ -69,12 +78,9 @@
   width: 100%;
 }
 
-.skeletonRating {
-  width: 100%;
-}
-
-.skeletonScore {
-  width: 100%;
+.skeletonCell {
+  width: 50px;
+  margin: 0 auto;
 }
 
 .error {
@@ -94,27 +100,34 @@
 }
 
 @media (max-width: 768px) {
-  .ratings-item,
-  .skeletonRow {
-    grid-template-columns: 1fr auto auto;
+  .header,
+  .row {
+    grid-template-columns: 1fr auto auto auto;
     gap: 8px;
   }
 
-  .ratings-item__label {
+  .label {
+    font-size: 14px;
+  }
+
+  .value {
     font-size: 14px;
   }
 }
 
 @media (max-width: 480px) {
-  .ratings-item,
-  .skeletonRow {
-    grid-template-columns: 1fr 1fr 1fr;
+  .header,
+  .row {
+    grid-template-columns: 1fr auto auto auto;
     gap: 4px;
   }
 
-  .ratings-item__label,
-  .ratings-item__rating,
-  .ratings-item__score {
+  .label,
+  .value {
     font-size: 12px;
+  }
+
+  .value {
+    min-width: 25px;
   }
 }

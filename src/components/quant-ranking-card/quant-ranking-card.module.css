@@ -9,7 +9,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px solid var(--border-color, #e0e0e0);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .row:last-of-type {
@@ -18,13 +18,13 @@
 }
 
 .label {
-  color: var(--black, #000);
+  color: var(--black);
   font-weight: 500;
   font-size: 15px;
 }
 
 .value {
-  color: var(--blue, #1e88e5);
+  color: var(--blue);
   font-weight: 500;
   font-size: 15px;
   text-align: right;
@@ -32,20 +32,136 @@
 
 .highlight {
   font-weight: 600;
-  color: var(--blue, #1e88e5);
+  color: var(--blue);
 }
 
 .link {
   display: inline-block;
   margin-top: 12px;
-  color: var(--blue, #1e88e5);
+  color: var(--blue);
   font-weight: 600;
   font-size: 16px;
   text-decoration: none;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
 }
 
 .link:hover {
   opacity: 0.8;
   text-decoration: underline;
+}
+
+.link:active {
+  opacity: 0.6;
+}
+
+.skeletonRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+  gap: 12px;
+}
+
+.skeletonRow:last-of-type {
+  border-bottom: none;
+  padding-bottom: 16px;
+}
+
+.skeletonLabel {
+  height: 16px;
+  width: 60%;
+  background: linear-gradient(
+    90deg,
+    var(--color-skeleton) 25%,
+    #f0f0f0 50%,
+    var(--color-skeleton) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeletonValue {
+  height: 16px;
+  width: 35%;
+  background: linear-gradient(
+    90deg,
+    var(--color-skeleton) 25%,
+    #f0f0f0 50%,
+    var(--color-skeleton) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeletonLink {
+  height: 20px;
+  width: 70%;
+  background: linear-gradient(
+    90deg,
+    var(--color-skeleton) 25%,
+    #f0f0f0 50%,
+    var(--color-skeleton) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+  margin-top: 12px;
+}
+
+.error {
+  color: #d32f2f;
+  font-size: 14px;
+  padding: 12px;
+  text-align: center;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .label {
+    font-size: 14px;
+  }
+
+  .value {
+    font-size: 14px;
+  }
+
+  .link {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 0;
+  }
+
+  .label {
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+
+  .value {
+    text-align: left;
+    font-size: 13px;
+  }
+
+  .skeletonRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
 }

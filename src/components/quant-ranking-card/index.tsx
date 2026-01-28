@@ -1,12 +1,26 @@
+import { memo } from "react";
 import { useQuantRanking } from "../../hooks";
 import { Card } from "../ui";
 import styles from "./quant-ranking-card.module.css";
+import { QuantRankingSkeleton } from "./quant-ranking-skeleton";
 
-export const QuantRankingCard = () => {
-  const { data } = useQuantRanking();
+const QuantRankingCardComponent = () => {
+  const { data, isLoading, error } = useQuantRanking();
 
-  if (!data) {
-    return <Card cardTitle="Quant Ranking" />;
+  if (isLoading) {
+    return (
+      <Card cardTitle="Quant Ranking">
+        <QuantRankingSkeleton />
+      </Card>
+    );
+  }
+
+  if (error || !data) {
+    return (
+      <Card cardTitle="Quant Ranking">
+        <div className={styles.error}>Unable to load data</div>
+      </Card>
+    );
   }
 
   const { sector, industry, rankings } = data;
@@ -54,10 +68,16 @@ export const QuantRankingCard = () => {
           </span>
         </div>
 
-        <a href="#" className={styles.link}>
+        <a
+          href="#"
+          className={styles.link}
+          aria-label="View detailed quant ratings"
+        >
           Quant Ratings Beat The Market »
         </a>
       </div>
     </Card>
   );
 };
+
+export const QuantRankingCard = memo(QuantRankingCardComponent);
