@@ -1,0 +1,13 @@
+.card {
+  width: 100%;
+  max-width: 325px;
+  padding: 25px 20px;
+  background-color: var(--white);
+}
+
+.card-title {
+  color: var(--gray);
+  font-weight: 400;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
