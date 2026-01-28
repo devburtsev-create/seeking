@@ -18,7 +18,7 @@ export interface FactorGrades3m {
   Valuation: string;
 }
 
-export type FactorGrades6m = Array<[string, string]>;
+export type FactorGrades6m = { data: Array<[string, string]> };
 
 export interface QuantRanking {
   industry: string;

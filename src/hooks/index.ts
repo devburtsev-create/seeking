@@ -25,7 +25,10 @@ export function useFactorGrades3m() {
 export function useFactorGrades6m() {
   return useQuery({
     queryKey: ["factorGrades6m"],
-    queryFn: seekingAlphaApi.factorGrades6m,
+    queryFn: async () => {
+      const res = await seekingAlphaApi.factorGrades6m();
+      return res.data;
+    },
   });
 }
 

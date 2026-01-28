@@ -3,7 +3,6 @@ import {
   FactorGradesCard,
   QuantRankingCard,
   RatingsSummaryCard,
-  Skeleton,
 } from "../components";
 import { queryClient } from "../api/query-client";
 
@@ -20,7 +19,6 @@ function App() {
         <RatingsSummaryCard />
         <FactorGradesCard />
         <QuantRankingCard />
-        <Skeleton width={200} />
       </div>
     </QueryClientProvider>
   );
