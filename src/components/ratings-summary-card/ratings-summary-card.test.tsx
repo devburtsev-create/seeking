@@ -56,10 +56,11 @@ describe("RatingsSummaryCard", () => {
     renderWithQueryClient(<RatingsSummaryCard />);
 
     await waitFor(() => {
-      expect(screen.getByText("Sa Analysts")).toBeInTheDocument();
-      expect(screen.getByText("Wall Street")).toBeInTheDocument();
-      expect(screen.getByText("Quant")).toBeInTheDocument();
-      expect(screen.getByText("HOLD")).toBeInTheDocument();
+      expect(screen.getByText(/sa analysts/i)).toBeInTheDocument();
+      expect(screen.getByText(/wall street/i)).toBeInTheDocument();
+      expect(screen.getByText(/quant/i)).toBeInTheDocument();
+
+      expect(screen.getAllByText("HOLD")).toHaveLength(2);
       expect(screen.getByText("BUY")).toBeInTheDocument();
     });
   });

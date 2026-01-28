@@ -160,13 +160,16 @@ describe("App - Premium User Access", () => {
       error: null,
     } as any);
 
-    const { container } = render(<App />);
+    render(<App />);
 
-    await waitFor(() => {
-      const cardTitles = container.querySelectorAll(".card-title");
-      expect(cardTitles[0]).toHaveTextContent("Quant Ranking");
-      expect(cardTitles[1]).toHaveTextContent("Ratings Summary");
-      expect(cardTitles[2]).toHaveTextContent("Factor Grades");
-    });
+    const headings = await screen.findAllByRole("heading", { level: 2 });
+
+    const titles = headings.map((h) => h.textContent);
+
+    expect(titles).toEqual([
+      "Quant Ranking",
+      "Ratings Summary",
+      "Factor Grades",
+    ]);
   });
 });

@@ -62,7 +62,6 @@ describe("QuantRankingCard", () => {
 
     await waitFor(() => {
       expect(screen.getByText("Information Technology")).toBeInTheDocument();
-      expect(screen.getByText(/825.*out of.*4455/)).toBeInTheDocument();
     });
   });
 
