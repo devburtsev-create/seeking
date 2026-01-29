@@ -1,4 +1,3 @@
-# Financial Dashboard
 
 ## Setup
 
@@ -17,3 +16,6 @@ npm run dev
 ```bash
 npm test
 ```
+
+
+
