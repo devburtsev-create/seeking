@@ -7,6 +7,10 @@ import styles from "./ratings.module.css";
 const formatLabel = (key: string) =>
   key.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 
+const truncateTo2 = (num: number) => {
+  return (Math.floor(num * 100) / 100).toFixed(2);
+};
+
 const RatingsSummaryCardComponent = () => {
   const { data, isLoading, error } = useRatingsSummary();
 
@@ -30,15 +34,15 @@ const RatingsSummaryCardComponent = () => {
     <Card cardTitle="Ratings Summary">
       <div className={styles.ratings}>
         {Object.entries(data).map(([key, { rating, score }]) => (
-          <dl key={key} className={styles["ratings-item"]}>
-            <dt className={styles["ratings-item__label"]}>
+          <div key={key} className={styles["ratings-item"]}>
+            <span className={styles["ratings-item__label"]}>
               {formatLabel(key)}
-            </dt>
-            <dd className={styles["ratings-item__rating"]}>{rating}</dd>
-            <dd className={styles["ratings-item__score"]}>
-              {Number(score).toFixed(2)}
-            </dd>
-          </dl>
+            </span>
+            <span className={styles["ratings-item__rating"]}>{rating}</span>
+            <span className={styles["ratings-item__score"]}>
+              {truncateTo2(score)}
+            </span>
+          </div>
         ))}
       </div>
     </Card>
